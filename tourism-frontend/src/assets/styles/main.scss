@@ -1,0 +1,525 @@
+// Import variables
+@import './variables.scss';
+
+// Reset & Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  line-height: $line-height-normal;
+  color: $dark-gray;
+  background-color: #f9f9f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+  color: $black;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: $transition-base;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-xl;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+// Common utility classes
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+  color: $white;
+}
+
+.bg-secondary {
+  background-color: $secondary-color;
+  color: $white;
+}
+
+.bg-accent {
+  background-color: $accent-color;
+  color: $white;
+}
+
+.bg-light {
+  background-color: $light-gray;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  border-radius: $border-radius-md;
+  transition: $transition-base;
+  
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+  
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+  
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  color: $white;
+  background-color: $primary-color;
+  border-color: $primary-color;
+  
+  &:hover {
+    background-color: $primary-dark;
+    border-color: $primary-dark;
+  }
+}
+
+.btn-secondary {
+  color: $white;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  
+  &:hover {
+    background-color: $secondary-dark;
+    border-color: $secondary-dark;
+  }
+}
+
+.btn-accent {
+  color: $white;
+  background-color: $accent-color;
+  border-color: $accent-color;
+  
+  &:hover {
+    background-color: $accent-dark;
+    border-color: $accent-dark;
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  
+  &.btn-primary {
+    color: $primary-color;
+    border-color: $primary-color;
+    
+    &:hover {
+      color: $white;
+      background-color: $primary-color;
+    }
+  }
+  
+  &.btn-secondary {
+    color: $secondary-color;
+    border-color: $secondary-color;
+    
+    &:hover {
+      color: $white;
+      background-color: $secondary-color;
+    }
+  }
+  
+  &.btn-accent {
+    color: $accent-color;
+    border-color: $accent-color;
+    
+    &:hover {
+      color: $white;
+      background-color: $accent-color;
+    }
+  }
+}
+
+.btn-sm {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-sm;
+}
+
+.btn-lg {
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-lg;
+}
+
+// Forms
+.form-group {
+  margin-bottom: $spacing-lg;
+}
+
+.form-label {
+  display: inline-block;
+  margin-bottom: $spacing-xs;
+  font-weight: $font-weight-medium;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $dark-gray;
+  background-color: $white;
+  background-clip: padding-box;
+  border: 1px solid $light-gray;
+  border-radius: $border-radius-md;
+  transition: $transition-base;
+  
+  &:focus {
+    color: $dark-gray;
+    background-color: $white;
+    border-color: lighten($primary-color, 25%);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+  
+  &::placeholder {
+    color: $medium-gray;
+    opacity: 1;
+  }
+  
+  &:disabled, &[readonly] {
+    background-color: $light-gray;
+    opacity: 1;
+  }
+}
+
+// Alert styles
+.alert {
+  position: relative;
+  padding: $spacing-md $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border: 1px solid transparent;
+  border-radius: $border-radius-md;
+  
+  &.alert-success {
+    color: darken($success, 30%);
+    background-color: lighten($success, 45%);
+    border-color: lighten($success, 35%);
+  }
+  
+  &.alert-danger {
+    color: darken($error, 30%);
+    background-color: lighten($error, 38%);
+    border-color: lighten($error, 25%);
+  }
+  
+  &.alert-warning {
+    color: darken($warning, 30%);
+    background-color: lighten($warning, 42%);
+    border-color: lighten($warning, 32%);
+  }
+  
+  &.alert-info {
+    color: darken($info, 30%);
+    background-color: lighten($info, 42%);
+    border-color: lighten($info, 32%);
+  }
+}
+
+// Card styles
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $white;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  transition: $transition-base;
+  
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+  
+  .card-header {
+    padding: $spacing-md $spacing-lg;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    
+    &:first-child {
+      border-radius: calc(#{$border-radius-lg} - 1px) calc(#{$border-radius-lg} - 1px) 0 0;
+    }
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: $spacing-lg;
+  }
+  
+  .card-title {
+    margin-bottom: $spacing-md;
+    font-size: $font-size-xl;
+  }
+  
+  .card-text {
+    margin-bottom: $spacing-md;
+  }
+  
+  .card-footer {
+    padding: $spacing-md $spacing-lg;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    
+    &:last-child {
+      border-radius: 0 0 calc(#{$border-radius-lg} - 1px) calc(#{$border-radius-lg} - 1px);
+    }
+  }
+}
+
+// Badge styles
+.badge {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  font-size: 75%;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: $border-radius-full;
+  transition: $transition-base;
+  
+  &.badge-primary {
+    color: $white;
+    background-color: $primary-color;
+  }
+  
+  &.badge-secondary {
+    color: $white;
+    background-color: $secondary-color;
+  }
+  
+  &.badge-accent {
+    color: $white;
+    background-color: $accent-color;
+  }
+  
+  &.badge-success {
+    color: $white;
+    background-color: $success;
+  }
+  
+  &.badge-danger {
+    color: $white;
+    background-color: $error;
+  }
+  
+  &.badge-warning {
+    color: $white;
+    background-color: $warning;
+  }
+  
+  &.badge-info {
+    color: $white;
+    background-color: $info;
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  list-style: none;
+  border-radius: $border-radius-md;
+  
+  .page-item {
+    &:first-child {
+      .page-link {
+        margin-left: 0;
+        border-top-left-radius: $border-radius-md;
+        border-bottom-left-radius: $border-radius-md;
+      }
+    }
+    
+    &:last-child {
+      .page-link {
+        border-top-right-radius: $border-radius-md;
+        border-bottom-right-radius: $border-radius-md;
+      }
+    }
+    
+    &.active .page-link {
+      z-index: 1;
+      color: $white;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+    
+    &.disabled .page-link {
+      color: $medium-gray;
+      pointer-events: none;
+      cursor: auto;
+      background-color: $white;
+      border-color: $light-gray;
+    }
+  }
+  
+  .page-link {
+    position: relative;
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: $primary-color;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    transition: $transition-base;
+    
+    &:hover {
+      z-index: 2;
+      color: $primary-dark;
+      text-decoration: none;
+      background-color: $light-gray;
+      border-color: $light-gray;
+    }
+    
+    &:focus {
+      z-index: 2;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+    }
+  }
+}
+
+// Responsive utilities
+@media (min-width: $breakpoint-sm) {
+  .d-sm-none {
+    display: none !important;
+  }
+  
+  .d-sm-flex {
+    display: flex !important;
+  }
+  
+  .d-sm-block {
+    display: block !important;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .d-md-none {
+    display: none !important;
+  }
+  
+  .d-md-flex {
+    display: flex !important;
+  }
+  
+  .d-md-block {
+    display: block !important;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .d-lg-none {
+    display: none !important;
+  }
+  
+  .d-lg-flex {
+    display: flex !important;
+  }
+  
+  .d-lg-block {
+    display: block !important;
+  }
+}
